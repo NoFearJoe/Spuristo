@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Example/IKAppUsageTracker.xcodeproj">
+   </FileRef>
+   <Group
+      location = "group:Source"
+      name = "Source">
+      <FileRef
+         location = "group:IKTracker.swift">
+      </FileRef>
+   </Group>
+</Workspace>

@@ -7,21 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		965F8CD11CEB037E008477B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965F8CD01CEB037E008477B5 /* AppDelegate.swift */; };
 		965F8CD31CEB037E008477B5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965F8CD21CEB037E008477B5 /* ViewController.swift */; };
 		965F8CD61CEB037E008477B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 965F8CD41CEB037E008477B5 /* Main.storyboard */; };
 		965F8CD81CEB037E008477B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 965F8CD71CEB037E008477B5 /* Assets.xcassets */; };
 		965F8CDB1CEB037E008477B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 965F8CD91CEB037E008477B5 /* LaunchScreen.storyboard */; };
+		965F8CE31CEB0E29008477B5 /* IKTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965F8CE21CEB0E29008477B5 /* IKTracker.swift */; };
+		965F8CE51CEB1D00008477B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965F8CE41CEB1D00008477B5 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		965F8CCD1CEB037E008477B5 /* IKAppUsageTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IKAppUsageTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		965F8CD01CEB037E008477B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		965F8CD21CEB037E008477B5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		965F8CD51CEB037E008477B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		965F8CD71CEB037E008477B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		965F8CDA1CEB037E008477B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		965F8CDC1CEB037E008477B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		965F8CE21CEB0E29008477B5 /* IKTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKTracker.swift; sourceTree = "<group>"; };
+		965F8CE41CEB1D00008477B5 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +56,8 @@
 		965F8CCF1CEB037E008477B5 /* IKAppUsageTracker */ = {
 			isa = PBXGroup;
 			children = (
-				965F8CD01CEB037E008477B5 /* AppDelegate.swift */,
+				965F8CE21CEB0E29008477B5 /* IKTracker.swift */,
+				965F8CE41CEB1D00008477B5 /* AppDelegate.swift */,
 				965F8CD21CEB037E008477B5 /* ViewController.swift */,
 				965F8CD41CEB037E008477B5 /* Main.storyboard */,
 				965F8CD71CEB037E008477B5 /* Assets.xcassets */,
@@ -135,8 +138,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				965F8CE51CEB1D00008477B5 /* AppDelegate.swift in Sources */,
 				965F8CD31CEB037E008477B5 /* ViewController.swift in Sources */,
-				965F8CD11CEB037E008477B5 /* AppDelegate.swift in Sources */,
+				965F8CE31CEB0E29008477B5 /* IKTracker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,7 +203,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -239,7 +243,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -290,6 +294,7 @@
 				965F8CE11CEB037E008477B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
