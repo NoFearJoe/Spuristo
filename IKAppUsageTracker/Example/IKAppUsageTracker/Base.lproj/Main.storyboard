@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="IKAppUsageTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpQ-Np-Y4b">
+                                <rect key="frame" x="271" y="285" width="59" height="30"/>
+                                <state key="normal" title="Button 2"/>
+                                <connections>
+                                    <action selector="onEveryConditionButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ydO-TT-qT6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cac-lp-t3f">
+                                <rect key="frame" x="272" y="207" width="57" height="30"/>
+                                <state key="normal" title="Button 1"/>
+                                <connections>
+                                    <action selector="onOnceConditionButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SD2-5W-A96"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xg3-TA-Bn0">
+                                <rect key="frame" x="271" y="363" width="59" height="30"/>
+                                <state key="normal" title="Button 3"/>
+                                <connections>
+                                    <action selector="onQuadraticConditionButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5r8-K0-urS"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xg3-TA-Bn0" firstAttribute="top" secondItem="fpQ-Np-Y4b" secondAttribute="bottom" constant="48" id="0Pv-Up-gPR"/>
+                            <constraint firstItem="xg3-TA-Bn0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9Rl-qV-0Pm"/>
+                            <constraint firstItem="fpQ-Np-Y4b" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Hs6-b8-JeU"/>
+                            <constraint firstItem="Cac-lp-t3f" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="M4a-iT-Acy"/>
+                            <constraint firstItem="fpQ-Np-Y4b" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="RMd-UQ-eMY"/>
+                            <constraint firstItem="fpQ-Np-Y4b" firstAttribute="top" secondItem="Cac-lp-t3f" secondAttribute="bottom" constant="48" id="W3a-if-cO0"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="everyConditionButton" destination="fpQ-Np-Y4b" id="tBZ-ym-89W"/>
+                        <outlet property="onceConditionButton" destination="Cac-lp-t3f" id="sm3-7m-B39"/>
+                        <outlet property="quadraticConditionButton" destination="xg3-TA-Bn0" id="HTy-D8-PLT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
