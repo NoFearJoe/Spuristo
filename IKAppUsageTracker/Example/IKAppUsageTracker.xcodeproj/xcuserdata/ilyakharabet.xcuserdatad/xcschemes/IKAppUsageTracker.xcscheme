@@ -28,6 +28,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "967E2DB71CEB74EF00D30056"
+               BuildableName = "IKAppUsageTrackerTests.xctest"
+               BlueprintName = "IKAppUsageTrackerTests"
+               ReferencedContainer = "container:IKAppUsageTracker.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

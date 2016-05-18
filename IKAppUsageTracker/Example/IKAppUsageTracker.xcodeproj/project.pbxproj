@@ -11,9 +11,20 @@
 		965F8CD61CEB037E008477B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 965F8CD41CEB037E008477B5 /* Main.storyboard */; };
 		965F8CD81CEB037E008477B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 965F8CD71CEB037E008477B5 /* Assets.xcassets */; };
 		965F8CDB1CEB037E008477B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 965F8CD91CEB037E008477B5 /* LaunchScreen.storyboard */; };
-		965F8CE31CEB0E29008477B5 /* IKTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965F8CE21CEB0E29008477B5 /* IKTracker.swift */; };
 		965F8CE51CEB1D00008477B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965F8CE41CEB1D00008477B5 /* AppDelegate.swift */; };
+		967E2DB31CEB745700D30056 /* IKTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967E2DB21CEB745700D30056 /* IKTracker.swift */; };
+		967E2DBB1CEB74EF00D30056 /* IKAppUsageTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967E2DBA1CEB74EF00D30056 /* IKAppUsageTrackerTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		967E2DBD1CEB74EF00D30056 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 965F8CC51CEB037E008477B5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 965F8CCC1CEB037E008477B5;
+			remoteInfo = IKAppUsageTracker;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		965F8CCD1CEB037E008477B5 /* IKAppUsageTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IKAppUsageTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -22,12 +33,22 @@
 		965F8CD71CEB037E008477B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		965F8CDA1CEB037E008477B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		965F8CDC1CEB037E008477B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		965F8CE21CEB0E29008477B5 /* IKTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKTracker.swift; sourceTree = "<group>"; };
 		965F8CE41CEB1D00008477B5 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		967E2DB21CEB745700D30056 /* IKTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKTracker.swift; sourceTree = "<group>"; };
+		967E2DB81CEB74EF00D30056 /* IKAppUsageTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IKAppUsageTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		967E2DBA1CEB74EF00D30056 /* IKAppUsageTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKAppUsageTrackerTests.swift; sourceTree = "<group>"; };
+		967E2DBC1CEB74EF00D30056 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		965F8CCA1CEB037E008477B5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		967E2DB51CEB74EF00D30056 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -41,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				965F8CCF1CEB037E008477B5 /* IKAppUsageTracker */,
+				967E2DB91CEB74EF00D30056 /* IKAppUsageTrackerTests */,
 				965F8CCE1CEB037E008477B5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				965F8CCD1CEB037E008477B5 /* IKAppUsageTracker.app */,
+				967E2DB81CEB74EF00D30056 /* IKAppUsageTrackerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -56,7 +79,7 @@
 		965F8CCF1CEB037E008477B5 /* IKAppUsageTracker */ = {
 			isa = PBXGroup;
 			children = (
-				965F8CE21CEB0E29008477B5 /* IKTracker.swift */,
+				967E2DB21CEB745700D30056 /* IKTracker.swift */,
 				965F8CE41CEB1D00008477B5 /* AppDelegate.swift */,
 				965F8CD21CEB037E008477B5 /* ViewController.swift */,
 				965F8CD41CEB037E008477B5 /* Main.storyboard */,
@@ -65,6 +88,15 @@
 				965F8CDC1CEB037E008477B5 /* Info.plist */,
 			);
 			path = IKAppUsageTracker;
+			sourceTree = "<group>";
+		};
+		967E2DB91CEB74EF00D30056 /* IKAppUsageTrackerTests */ = {
+			isa = PBXGroup;
+			children = (
+				967E2DBA1CEB74EF00D30056 /* IKAppUsageTrackerTests.swift */,
+				967E2DBC1CEB74EF00D30056 /* Info.plist */,
+			);
+			path = IKAppUsageTrackerTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -87,6 +119,24 @@
 			productReference = 965F8CCD1CEB037E008477B5 /* IKAppUsageTracker.app */;
 			productType = "com.apple.product-type.application";
 		};
+		967E2DB71CEB74EF00D30056 /* IKAppUsageTrackerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 967E2DBF1CEB74EF00D30056 /* Build configuration list for PBXNativeTarget "IKAppUsageTrackerTests" */;
+			buildPhases = (
+				967E2DB41CEB74EF00D30056 /* Sources */,
+				967E2DB51CEB74EF00D30056 /* Frameworks */,
+				967E2DB61CEB74EF00D30056 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				967E2DBE1CEB74EF00D30056 /* PBXTargetDependency */,
+			);
+			name = IKAppUsageTrackerTests;
+			productName = IKAppUsageTrackerTests;
+			productReference = 967E2DB81CEB74EF00D30056 /* IKAppUsageTrackerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -99,6 +149,10 @@
 				TargetAttributes = {
 					965F8CCC1CEB037E008477B5 = {
 						CreatedOnToolsVersion = 7.3;
+					};
+					967E2DB71CEB74EF00D30056 = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = 965F8CCC1CEB037E008477B5;
 					};
 				};
 			};
@@ -116,6 +170,7 @@
 			projectRoot = "";
 			targets = (
 				965F8CCC1CEB037E008477B5 /* IKAppUsageTracker */,
+				967E2DB71CEB74EF00D30056 /* IKAppUsageTrackerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -131,6 +186,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		967E2DB61CEB74EF00D30056 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -139,12 +201,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				965F8CE51CEB1D00008477B5 /* AppDelegate.swift in Sources */,
+				967E2DB31CEB745700D30056 /* IKTracker.swift in Sources */,
 				965F8CD31CEB037E008477B5 /* ViewController.swift in Sources */,
-				965F8CE31CEB0E29008477B5 /* IKTracker.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		967E2DB41CEB74EF00D30056 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				967E2DBB1CEB74EF00D30056 /* IKAppUsageTrackerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		967E2DBE1CEB74EF00D30056 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 965F8CCC1CEB037E008477B5 /* IKAppUsageTracker */;
+			targetProxy = 967E2DBD1CEB74EF00D30056 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		965F8CD41CEB037E008477B5 /* Main.storyboard */ = {
@@ -275,6 +353,32 @@
 			};
 			name = Release;
 		};
+		967E2DC01CEB74EF00D30056 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = IKAppUsageTrackerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = IK.IKAppUsageTrackerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IKAppUsageTracker.app/IKAppUsageTracker";
+			};
+			name = Debug;
+		};
+		967E2DC11CEB74EF00D30056 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = IKAppUsageTrackerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = IK.IKAppUsageTrackerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IKAppUsageTracker.app/IKAppUsageTracker";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -292,6 +396,15 @@
 			buildConfigurations = (
 				965F8CE01CEB037E008477B5 /* Debug */,
 				965F8CE11CEB037E008477B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		967E2DBF1CEB74EF00D30056 /* Build configuration list for PBXNativeTarget "IKAppUsageTrackerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				967E2DC01CEB74EF00D30056 /* Debug */,
+				967E2DC11CEB74EF00D30056 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

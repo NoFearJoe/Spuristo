@@ -25,12 +25,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        onceConditionButton.titleLabel?.text = "Usages count: \(onceConditionTracker.usagesCount)"
-        everyConditionButton.titleLabel?.text = "Usages count: \(everyConditionTracker.usagesCount)"
-        quadraticConditionButton.titleLabel?.text = "Usages count: \(quadraticConditionTracker.usagesCount)"
-        
-        
         onceConditionTracker = IKTracker(key: "onceConditionTracker", condition: IKTrackerCondition.Once(2))
         onceConditionTracker.checkpoint = { [weak self] _ in
             self?.showRateDialog("\"Once condition\" tracker", tracker: self?.onceConditionTracker)
@@ -52,16 +46,25 @@ class ViewController: UIViewController {
         }
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        onceConditionButton.setTitle("Once condition. Usages count: \(onceConditionTracker.usagesCount)", forState: .Normal)
+        onceConditionButton.enabled = onceConditionTracker.enabled
+        everyConditionButton.setTitle("Every condition. Usages count: \(everyConditionTracker.usagesCount)", forState: .Normal)
+        everyConditionButton.enabled = everyConditionTracker.enabled
+        quadraticConditionButton.setTitle("Quadratic condition. Usages count: \(quadraticConditionTracker.usagesCount)", forState: .Normal)
+        quadraticConditionButton.enabled = quadraticConditionTracker.enabled
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
     
     private func showRateDialog(message: String, tracker: IKTracker?) {
-        let alert = UIAlertController(title: "Checkpoint", message: message, preferredStyle: .ActionSheet)
-        alert.addAction(UIAlertAction(title: "Ok", style: .Destructive, handler: { (action) in
-            tracker?.disable()
-        }))
+        let alert = UIAlertController(title: "Checkpoint", message: message, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .Destructive, handler: nil))
         presentViewController(alert, animated: true, completion: nil)
     }
     
@@ -70,19 +73,22 @@ class ViewController: UIViewController {
     @IBAction func onOnceConditionButtonTouched(sender: UIButton) {
         onceConditionTracker.commit()
         sharedTracker?.commit()
-        sender.titleLabel?.text = "Usages count: \(onceConditionTracker.usagesCount)"
+        sender.setTitle("Once condition. Usages count: \(onceConditionTracker.usagesCount)", forState: .Normal)
+        sender.enabled = onceConditionTracker.enabled
     }
     
     @IBAction func onEveryConditionButtonTouched(sender: UIButton) {
         everyConditionTracker.commit()
         sharedTracker?.commit()
-        sender.titleLabel?.text = "Usages count: \(everyConditionTracker.usagesCount)"
+        sender.setTitle("Every condition. Usages count: \(everyConditionTracker.usagesCount)", forState: .Normal)
+        sender.enabled = everyConditionTracker.enabled
     }
     
     @IBAction func onQuadraticConditionButtonTouched(sender: UIButton) {
         quadraticConditionTracker.commit()
         sharedTracker?.commit()
-        sender.titleLabel?.text = "Usages count: \(quadraticConditionTracker.usagesCount)"
+        sender.setTitle("Quadratic condition. Usages count: \(quadraticConditionTracker.usagesCount)", forState: .Normal)
+        sender.enabled = quadraticConditionTracker.enabled
     }
 
 

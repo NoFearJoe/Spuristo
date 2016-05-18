@@ -17,19 +17,19 @@ typealias IKVoidClosure = () -> ()
  
  - Once:      Tracker will evaluate checkpiont once after N usages
  - Every:     Tracker will evaluate checkpoint every N usages
- - Quadratic: Tracker will evaluate checkpoint every power of N
+ - Quadratic: Tracker will evaluate checkpoint every time when usages count is power of N
  */
 enum IKTrackerCondition {
     
     /// Tracker will evaluate checkpiont once after N usages
-    case Once(Int)
+    case Once(UInt)
     
     /// Tracker will evaluate checkpoint every N usages
-    case Every(Int)
+    case Every(UInt)
     
     /// Tracker will evaluate checkpoint every power of N
-    case Quadratic(Int)
-
+    case Quadratic(UInt)
+    
 }
 
 
@@ -60,44 +60,46 @@ final class IKTrackerPool {
     
     
     private var pool = [String: IKTracker]()
-
+    
 }
 
 
 class IKTracker {
     
     /// Class identifier
-    private static let identifier = "IKTracker"
+    private static let identifier: String = NSStringFromClass(IKTracker.self)
     
     /// Closure fired when usages count satisfies the condition
     var checkpoint: IKVoidClosure?
     
-    /// Identificational key
+    /// Identification key
     private(set) var key: String!
     private(set) var condition: IKTrackerCondition!
     
     /// Usages counter
-    private(set) var usagesCount: Int {
+    private(set) var usagesCount: UInt {
         get {
-            return NSUserDefaults.standardUserDefaults().integerForKey(IKTracker.identifier + key)
+            return (NSUserDefaults.standardUserDefaults().objectForKey(IKTracker.identifier + key + "usagesCount") ?? 0) as! UInt
         }
         set {
-            NSUserDefaults.standardUserDefaults().setInteger(newValue, forKey: IKTracker.identifier + key)
+            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: IKTracker.identifier + key + "usagesCount")
+            NSUserDefaults.standardUserDefaults().synchronize()
         }
     }
     
     /// Return true if tracker enabled
-    private var enabled: Bool {
+    private(set) var enabled: Bool {
         get {
-            return NSUserDefaults.standardUserDefaults().boolForKey(IKTracker.identifier + key)
+            return (NSUserDefaults.standardUserDefaults().objectForKey(IKTracker.identifier + key + "enabled") ?? true) as! Bool
         }
         set {
-            NSUserDefaults.standardUserDefaults().setBool(newValue, forKey: IKTracker.identifier + key)
+            NSUserDefaults.standardUserDefaults().setBool(newValue, forKey: IKTracker.identifier + key + "enabled")
+            NSUserDefaults.standardUserDefaults().synchronize()
         }
     }
     
     /**
-     IKTracker initializer
+     IKTracker initializer. This instance will be automatically added to IKTrackerPool
      
      - parameter key:       Identification key
      - parameter condition: Condition type
@@ -116,13 +118,26 @@ class IKTracker {
      */
     func commit() {
         if enabled {
-            usagesCount += 1
+            if usagesCount < UInt.max {
+                usagesCount += 1
+            }
         }
         
         if satisfiesCondition(usagesCount: usagesCount, condition: condition) {
             checkpoint?()
         }
+        
+        setEnabledByCondition(usagesCount, condition: condition)
     }
+    
+    /**
+     Return tracker to initial state (usages count = 0 and enabled = true)
+     */
+    func drop() {
+        usagesCount = 0
+        enabled = true
+    }
+    
     
     /**
      Set tracker disabled. WARNING: Tracker never been work after evaluating of this function!
@@ -139,7 +154,7 @@ class IKTracker {
      
      - returns: True if satisfies
      */
-    private func satisfiesCondition(usagesCount count: Int, condition: IKTrackerCondition) -> Bool {
+    private func satisfiesCondition(usagesCount count: UInt, condition: IKTrackerCondition) -> Bool {
         switch condition {
         case .Once(let targetCount):
             return enabled && usagesCount == targetCount
@@ -156,25 +171,24 @@ class IKTracker {
      
      - parameter condition: Condition type
      */
-    private func setEnabledByCondition(condition: IKTrackerCondition) {
+    private func setEnabledByCondition(usagesCount: UInt, condition: IKTrackerCondition) {
         switch condition {
         case .Once(_):
             enabled = false
             break
-        case .Every(let targetCount):
-            if targetCount == Int.max {
+        case .Every(_):
+            if usagesCount >= UInt.max {
                 enabled = false
             }
             break
-        case .Quadratic(let targetCount):
-            if targetCount == Int.max {
+        case .Quadratic(_):
+            if usagesCount >= UInt.max {
                 enabled = false
             }
             break
         }
     }
     
-
+    
 }
-
 
