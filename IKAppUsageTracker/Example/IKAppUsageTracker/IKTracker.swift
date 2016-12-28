@@ -22,13 +22,13 @@ typealias IKVoidClosure = () -> ()
 enum IKTrackerCondition {
     
     /// Tracker will evaluate checkpiont once after N usages
-    case Once(UInt)
+    case once(UInt)
     
     /// Tracker will evaluate checkpoint every N usages
-    case Every(UInt)
+    case every(UInt)
     
     /// Tracker will evaluate checkpoint every power of N
-    case Quadratic(UInt)
+    case quadratic(UInt)
     
 }
 
@@ -59,7 +59,7 @@ final class IKTrackerPool {
     }
     
     
-    private var pool = [String: IKTracker]()
+    fileprivate var pool = [String: IKTracker]()
     
 }
 
@@ -67,34 +67,34 @@ final class IKTrackerPool {
 class IKTracker {
     
     /// Class identifier
-    private static let identifier: String = NSStringFromClass(IKTracker.self)
+    fileprivate static let identifier: String = NSStringFromClass(IKTracker.self)
     
     /// Closure fired when usages count satisfies the condition
     var checkpoint: IKVoidClosure?
     
     /// Identification key
-    private(set) var key: String!
-    private(set) var condition: IKTrackerCondition!
+    fileprivate(set) var key: String!
+    fileprivate(set) var condition: IKTrackerCondition!
     
     /// Usages counter
-    private(set) var usagesCount: UInt {
+    fileprivate(set) var usagesCount: UInt {
         get {
-            return (NSUserDefaults.standardUserDefaults().objectForKey(IKTracker.identifier + key + "usagesCount") ?? 0) as! UInt
+            return (UserDefaults.standard.object(forKey: IKTracker.identifier + key + "usagesCount") ?? 0) as! UInt
         }
         set {
-            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: IKTracker.identifier + key + "usagesCount")
-            NSUserDefaults.standardUserDefaults().synchronize()
+            UserDefaults.standard.set(newValue, forKey: IKTracker.identifier + key + "usagesCount")
+            UserDefaults.standard.synchronize()
         }
     }
     
     /// Return true if tracker enabled
-    private(set) var enabled: Bool {
+    fileprivate(set) var enabled: Bool {
         get {
-            return (NSUserDefaults.standardUserDefaults().objectForKey(IKTracker.identifier + key + "enabled") ?? true) as! Bool
+            return (UserDefaults.standard.object(forKey: IKTracker.identifier + key + "enabled") ?? true) as! Bool
         }
         set {
-            NSUserDefaults.standardUserDefaults().setBool(newValue, forKey: IKTracker.identifier + key + "enabled")
-            NSUserDefaults.standardUserDefaults().synchronize()
+            UserDefaults.standard.set(newValue, forKey: IKTracker.identifier + key + "enabled")
+            UserDefaults.standard.synchronize()
         }
     }
     
@@ -154,13 +154,13 @@ class IKTracker {
      
      - returns: True if satisfies
      */
-    private func satisfiesCondition(usagesCount count: UInt, condition: IKTrackerCondition) -> Bool {
+    fileprivate func satisfiesCondition(usagesCount count: UInt, condition: IKTrackerCondition) -> Bool {
         switch condition {
-        case .Once(let targetCount):
+        case .once(let targetCount):
             return enabled && usagesCount == targetCount
-        case .Every(let targetCount):
-            return enabled && Double(usagesCount) % Double(targetCount) == 0
-        case .Quadratic(let targetCount):
+        case .every(let targetCount):
+            return enabled && Double(usagesCount).truncatingRemainder(dividingBy: Double(targetCount)) == 0
+        case .quadratic(let targetCount):
             let power = log(Double(usagesCount)) / log(Double(targetCount))
             return enabled && floor(power) == power && power != 0
         }
@@ -171,17 +171,17 @@ class IKTracker {
      
      - parameter condition: Condition type
      */
-    private func setEnabledByCondition(usagesCount: UInt, condition: IKTrackerCondition) {
+    fileprivate func setEnabledByCondition(_ usagesCount: UInt, condition: IKTrackerCondition) {
         switch condition {
-        case .Once(_):
+        case .once(_):
             enabled = false
             break
-        case .Every(_):
+        case .every(_):
             if usagesCount >= UInt.max {
                 enabled = false
             }
             break
-        case .Quadratic(_):
+        case .quadratic(_):
             if usagesCount >= UInt.max {
                 enabled = false
             }
