@@ -11,15 +11,15 @@ Just download the source code from repository and drop all files from "Sources" 
 
 ## Usage
 ##### Create tracker
-At first create instance of ```Tracker``` class like this:
+At first register a ```Tracker``` like this:
 ```Swift
-  let tracker = Tracker(with: "some_key", condition: TrackerCondition.Every(2))
+  Tracker.register(with: "some_key", condition: TrackerCondition.Every(2))
 ```
 
 ##### Get tracker instance
 All trackers will be automatically added to tracker pool. And you can get tracker by ```key``` like this:
 ```Swift
-  let tracker = Tracker(for: "some_key")
+  let tracker = Tracker.obtain(for: "some_key")
 ```
 
 ##### Conditions
