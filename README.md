@@ -11,13 +11,13 @@ Just download the source code from repository and drop all files from "Sources" 
 
 ## Usage
 ##### Create tracker
-At first create instance of Tracker class like this:
+At first create instance of ```Tracker``` class like this:
 ```Swift
   let tracker = Tracker(with: "some_key", condition: TrackerCondition.Every(2))
 ```
 
 ##### Get tracker instance
-Where key is any string that identifies this tracker object in trackers pool. All trackers are automatically added to tracker pool. And you can get anyone like this:
+All trackers will be automatically added to tracker pool. And you can get tracker by ```key``` like this:
 ```Swift
   let tracker = Tracker(for: "some_key")
 ```
@@ -37,10 +37,10 @@ or
 ```Swift
   tracker.commit(n: UInt)
 ```
-In second case tracker will commit N times.
+In second case tracker will commit ```n``` times.
 
 ##### Checkpoint
-Checkpoint is closure calls when usages count satisfies the condition. For example, checkpoint closure will be called if condition is .Every(2) and action was commited 2 times.
+Checkpoint is closure calls when usages count satisfies the condition. For example, checkpoint closure will be called if condition is ```.Every(2)``` and action was commited 2 times.
 ```Swift
   tracker.checkpoint = {
     // Some code
