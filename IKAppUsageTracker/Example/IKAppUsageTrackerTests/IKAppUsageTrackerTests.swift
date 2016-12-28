@@ -21,9 +21,9 @@ class IKAppUsageTrackerTests: XCTestCase {
     
     
     func testMaxValue() {
-        let tracker = IKTracker(key: "testTracker", condition: IKTrackerCondition.every(2))
+        let tracker = Tracker(key: "testTracker", condition: TrackerCondition.every(2))
         let val = UInt.max - 1
-        UserDefaults.standard.set(val, forKey: "IKAppUsageTracker.IKTrackertestTrackerusagesCount")
+        UserDefaults.standard.set(val, forKey: "IKAppUsageTracker.TrackertestTrackerusagesCount")
         UserDefaults.standard.synchronize()
         for _ in 0..<10 {
             tracker.commit()
@@ -32,9 +32,9 @@ class IKAppUsageTrackerTests: XCTestCase {
     }
     
     func testDrop() {
-        let tracker = IKTracker(key: "testTracker1", condition: IKTrackerCondition.every(2))
+        let tracker = Tracker(key: "testTracker1", condition: TrackerCondition.every(2))
         let val = 5
-        UserDefaults.standard.set(val, forKey: "IKAppUsageTracker.IKTrackertestTracker1usagesCount")
+        UserDefaults.standard.set(val, forKey: "IKAppUsageTracker.TrackertestTracker1usagesCount")
         UserDefaults.standard.synchronize()
         XCTAssert(tracker.usagesCount == 5)
         tracker.drop()
@@ -43,7 +43,7 @@ class IKAppUsageTrackerTests: XCTestCase {
     
     func testSatisfiesCondition() {
         let targetPower: UInt = 2
-        let tracker = IKTracker(key: "testTracker2", condition: IKTrackerCondition.quadratic(targetPower))
+        let tracker = Tracker(key: "testTracker2", condition: TrackerCondition.quadratic(targetPower))
         tracker.checkpoint = {
             let power = log(Double(tracker.usagesCount)) / log(Double(targetPower))
             XCTAssert(floor(power) == power && power != 0, "Usages count = \(tracker.usagesCount), Power = \(power)")

@@ -15,30 +15,30 @@ class ViewController: UIViewController {
     @IBOutlet weak var quadraticConditionButton: UIButton!
     
     
-    fileprivate var onceConditionTracker: IKTracker!
-    fileprivate var everyConditionTracker: IKTracker!
-    fileprivate var quadraticConditionTracker: IKTracker!
+    fileprivate var onceConditionTracker: Tracker!
+    fileprivate var everyConditionTracker: Tracker!
+    fileprivate var quadraticConditionTracker: Tracker!
     
-    fileprivate var sharedTracker: IKTracker?
+    fileprivate var sharedTracker: Tracker?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        onceConditionTracker = IKTracker(key: "onceConditionTracker", condition: IKTrackerCondition.once(2))
+        onceConditionTracker = Tracker(key: "onceConditionTracker", condition: TrackerCondition.once(2))
         onceConditionTracker.checkpoint = { [weak self] _ in
             self?.showRateDialog("\"Once condition\" tracker", tracker: self?.onceConditionTracker)
         }
-        everyConditionTracker = IKTracker(key: "everyConditionTracker", condition: IKTrackerCondition.every(2))
+        everyConditionTracker = Tracker(key: "everyConditionTracker", condition: TrackerCondition.every(2))
         everyConditionTracker.checkpoint = { [weak self] _ in
             self?.showRateDialog("\"Every condition\" tracker", tracker: self?.everyConditionTracker)
         }
-        quadraticConditionTracker = IKTracker(key: "quadraticConditionTracker", condition: IKTrackerCondition.quadratic(2))
+        quadraticConditionTracker = Tracker(key: "quadraticConditionTracker", condition: TrackerCondition.quadratic(2))
         quadraticConditionTracker.checkpoint = { [weak self] _ in
             self?.showRateDialog("\"Quadratic condition\" tracker", tracker: self?.quadraticConditionTracker)
         }
         
-        if let sharedTracker = IKTrackerPool.sharedInstance["saredTracker"] {
+        if let sharedTracker = TrackerPool.sharedInstance["saredTracker"] {
             self.sharedTracker = sharedTracker
             self.sharedTracker?.checkpoint = { [weak self] _ in
                 self?.showRateDialog("Shared tracker", tracker: self?.sharedTracker)
@@ -62,7 +62,7 @@ class ViewController: UIViewController {
     }
     
     
-    fileprivate func showRateDialog(_ message: String, tracker: IKTracker?) {
+    fileprivate func showRateDialog(_ message: String, tracker: Tracker?) {
         let alert = UIAlertController(title: "Checkpoint", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .destructive, handler: nil))
         present(alert, animated: true, completion: nil)

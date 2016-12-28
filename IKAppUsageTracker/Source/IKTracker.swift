@@ -1,5 +1,5 @@
 //
-//  IKTracker.swift
+//  Tracker.swift
 //  
 //
 //  Created by Ilya Kharabet on 17.05.16.
@@ -9,7 +9,7 @@
 import Foundation
 
 
-typealias IKVoidClosure = () -> ()
+typealias VoidClosure = () -> ()
 
 
 /**
@@ -19,7 +19,7 @@ typealias IKVoidClosure = () -> ()
  - Every:     Tracker will call checkpoint every N usages
  - Quadratic: Tracker will call checkpoint every time when usages count is power of N
  */
-enum IKTrackerCondition {
+enum TrackerCondition {
     
     /// Tracker will call checkpiont once after N usages
     case Once(UInt)
@@ -33,14 +33,14 @@ enum IKTrackerCondition {
 }
 
 
-/// IKTracker class instances pool. Use IKTrackerPool.sharedInstance[KEY] for getting IKTracker instance with desired KEY
-final class IKTrackerPool {
+/// Tracker class instances pool. Use TrackerPool.sharedInstance[KEY] for getting Tracker instance with desired KEY
+final class TrackerPool {
     
-    /// IKTrackerPool shared instance
-    static let sharedInstance = IKTrackerPool()
+    /// TrackerPool shared instance
+    static let sharedInstance = TrackerPool()
     
     
-    subscript(key: String) -> IKTracker? {
+    subscript(key: String) -> Tracker? {
         get {
             return pool[key]
         }
@@ -50,42 +50,42 @@ final class IKTrackerPool {
     }
     
     
-    var first: IKTracker? {
+    var first: Tracker? {
         return Array(pool.values).first
     }
     
-    var last: IKTracker? {
+    var last: Tracker? {
         return Array(pool.values).last
     }
     
     
-    private var pool = [String: IKTracker]()
+    private var pool = [String: Tracker]()
     
 }
 
 
-class IKTracker {
+class Tracker {
     
     /// Class identifier
-    private static let identifier: String = NSStringFromClass(IKTracker.self)
+    private static let identifier: String = NSStringFromClass(Tracker.self)
     
     
     /// Closure fired when usages count satisfies the condition
-    var checkpoint: IKVoidClosure?
+    var checkpoint: VoidClosure?
     
     
     /// Identification key
     private(set) var key: String!
-    private(set) var condition: IKTrackerCondition!
+    private(set) var condition: TrackerCondition!
     
     
     /// Usages counter
     private(set) var usagesCount: UInt {
         get {
-            return (NSUserDefaults.standardUserDefaults().objectForKey(IKTracker.identifier + key + "usagesCount") ?? 0) as! UInt
+            return (NSUserDefaults.standardUserDefaults().objectForKey(Tracker.identifier + key + "usagesCount") ?? 0) as! UInt
         }
         set {
-            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: IKTracker.identifier + key + "usagesCount")
+            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: Tracker.identifier + key + "usagesCount")
             NSUserDefaults.standardUserDefaults().synchronize()
         }
     }
@@ -93,28 +93,28 @@ class IKTracker {
     /// Returns true if tracker enabled
     private(set) var enabled: Bool {
         get {
-            return (NSUserDefaults.standardUserDefaults().objectForKey(IKTracker.identifier + key + "enabled") ?? true) as! Bool
+            return (NSUserDefaults.standardUserDefaults().objectForKey(Tracker.identifier + key + "enabled") ?? true) as! Bool
         }
         set {
-            NSUserDefaults.standardUserDefaults().setBool(newValue, forKey: IKTracker.identifier + key + "enabled")
+            NSUserDefaults.standardUserDefaults().setBool(newValue, forKey: Tracker.identifier + key + "enabled")
             NSUserDefaults.standardUserDefaults().synchronize()
         }
     }
     
     
     /**
-     IKTracker initializer. This instance will be automatically added to IKTrackerPool
+     Tracker initializer. This instance will be automatically added to TrackerPool
      
      - parameter key:       Identification key
      - parameter condition: Condition type
      
-     - returns: Instance of IKTracker class
+     - returns: Instance of Tracker class
      */
-    init(key: String, condition: IKTrackerCondition) {
+    init(key: String, condition: TrackerCondition) {
         self.key = key
         self.condition = condition
         
-        IKTrackerPool.sharedInstance[key] = self
+        TrackerPool.sharedInstance[key] = self
     }
     
     
@@ -160,7 +160,7 @@ class IKTracker {
      
      - returns: True if satisfies
      */
-    private func satisfiesCondition(usagesCount count: UInt, condition: IKTrackerCondition) -> Bool {
+    private func satisfiesCondition(usagesCount count: UInt, condition: TrackerCondition) -> Bool {
         switch condition {
         case .Once(let targetCount):
             return enabled && usagesCount == targetCount
@@ -177,7 +177,7 @@ class IKTracker {
      
      - parameter condition: Condition type
      */
-    private func setEnabledByCondition(usagesCount: UInt, condition: IKTrackerCondition) {
+    private func setEnabledByCondition(usagesCount: UInt, condition: TrackerCondition) {
         switch condition {
         case .Once(_):
             enabled = false
