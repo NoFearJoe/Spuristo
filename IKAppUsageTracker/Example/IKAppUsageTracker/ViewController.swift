@@ -15,25 +15,25 @@ class ViewController: UIViewController {
     @IBOutlet weak var quadraticConditionButton: UIButton!
     
     
-    private var onceConditionTracker: IKTracker!
-    private var everyConditionTracker: IKTracker!
-    private var quadraticConditionTracker: IKTracker!
+    fileprivate var onceConditionTracker: IKTracker!
+    fileprivate var everyConditionTracker: IKTracker!
+    fileprivate var quadraticConditionTracker: IKTracker!
     
-    private var sharedTracker: IKTracker?
+    fileprivate var sharedTracker: IKTracker?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        onceConditionTracker = IKTracker(key: "onceConditionTracker", condition: IKTrackerCondition.Once(2))
+        onceConditionTracker = IKTracker(key: "onceConditionTracker", condition: IKTrackerCondition.once(2))
         onceConditionTracker.checkpoint = { [weak self] _ in
             self?.showRateDialog("\"Once condition\" tracker", tracker: self?.onceConditionTracker)
         }
-        everyConditionTracker = IKTracker(key: "everyConditionTracker", condition: IKTrackerCondition.Every(2))
+        everyConditionTracker = IKTracker(key: "everyConditionTracker", condition: IKTrackerCondition.every(2))
         everyConditionTracker.checkpoint = { [weak self] _ in
             self?.showRateDialog("\"Every condition\" tracker", tracker: self?.everyConditionTracker)
         }
-        quadraticConditionTracker = IKTracker(key: "quadraticConditionTracker", condition: IKTrackerCondition.Quadratic(2))
+        quadraticConditionTracker = IKTracker(key: "quadraticConditionTracker", condition: IKTrackerCondition.quadratic(2))
         quadraticConditionTracker.checkpoint = { [weak self] _ in
             self?.showRateDialog("\"Quadratic condition\" tracker", tracker: self?.quadraticConditionTracker)
         }
@@ -46,15 +46,15 @@ class ViewController: UIViewController {
         }
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        onceConditionButton.setTitle("Once condition. Usages count: \(onceConditionTracker.usagesCount)", forState: .Normal)
-        onceConditionButton.enabled = onceConditionTracker.enabled
-        everyConditionButton.setTitle("Every condition. Usages count: \(everyConditionTracker.usagesCount)", forState: .Normal)
-        everyConditionButton.enabled = everyConditionTracker.enabled
-        quadraticConditionButton.setTitle("Quadratic condition. Usages count: \(quadraticConditionTracker.usagesCount)", forState: .Normal)
-        quadraticConditionButton.enabled = quadraticConditionTracker.enabled
+        onceConditionButton.setTitle("Once condition. Usages count: \(onceConditionTracker.usagesCount)", for: UIControlState())
+        onceConditionButton.isEnabled = onceConditionTracker.enabled
+        everyConditionButton.setTitle("Every condition. Usages count: \(everyConditionTracker.usagesCount)", for: UIControlState())
+        everyConditionButton.isEnabled = everyConditionTracker.enabled
+        quadraticConditionButton.setTitle("Quadratic condition. Usages count: \(quadraticConditionTracker.usagesCount)", for: UIControlState())
+        quadraticConditionButton.isEnabled = quadraticConditionTracker.enabled
     }
     
     override func didReceiveMemoryWarning() {
@@ -62,33 +62,33 @@ class ViewController: UIViewController {
     }
     
     
-    private func showRateDialog(message: String, tracker: IKTracker?) {
-        let alert = UIAlertController(title: "Checkpoint", message: message, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .Destructive, handler: nil))
-        presentViewController(alert, animated: true, completion: nil)
+    fileprivate func showRateDialog(_ message: String, tracker: IKTracker?) {
+        let alert = UIAlertController(title: "Checkpoint", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .destructive, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
     
     
-    @IBAction func onOnceConditionButtonTouched(sender: UIButton) {
+    @IBAction func onOnceConditionButtonTouched(_ sender: UIButton) {
         onceConditionTracker.commit()
         sharedTracker?.commit()
-        sender.setTitle("Once condition. Usages count: \(onceConditionTracker.usagesCount)", forState: .Normal)
-        sender.enabled = onceConditionTracker.enabled
+        sender.setTitle("Once condition. Usages count: \(onceConditionTracker.usagesCount)", for: UIControlState())
+        sender.isEnabled = onceConditionTracker.enabled
     }
     
-    @IBAction func onEveryConditionButtonTouched(sender: UIButton) {
+    @IBAction func onEveryConditionButtonTouched(_ sender: UIButton) {
         everyConditionTracker.commit()
         sharedTracker?.commit()
-        sender.setTitle("Every condition. Usages count: \(everyConditionTracker.usagesCount)", forState: .Normal)
-        sender.enabled = everyConditionTracker.enabled
+        sender.setTitle("Every condition. Usages count: \(everyConditionTracker.usagesCount)", for: UIControlState())
+        sender.isEnabled = everyConditionTracker.enabled
     }
     
-    @IBAction func onQuadraticConditionButtonTouched(sender: UIButton) {
+    @IBAction func onQuadraticConditionButtonTouched(_ sender: UIButton) {
         quadraticConditionTracker.commit()
         sharedTracker?.commit()
-        sender.setTitle("Quadratic condition. Usages count: \(quadraticConditionTracker.usagesCount)", forState: .Normal)
-        sender.enabled = quadraticConditionTracker.enabled
+        sender.setTitle("Quadratic condition. Usages count: \(quadraticConditionTracker.usagesCount)", for: UIControlState())
+        sender.isEnabled = quadraticConditionTracker.enabled
     }
 
 
