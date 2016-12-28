@@ -34,7 +34,7 @@ enum TrackerCondition {
 
 
 /// Tracker class instances pool. Use TrackerPool.sharedInstance[KEY] for getting Tracker instance with desird KEY
-final class TrackerPool {
+fileprivate final class TrackerPool {
     
     /// TrackerPool shared instance
     static let sharedInstance = TrackerPool()
@@ -98,20 +98,34 @@ class Tracker {
         }
     }
     
-    /**
-     Tracker initializer. This instance will be automatically added to TrackerPool
+    /*
+     Register tracker with given key and condition.
      
      - parameter key:       Identification key
      - parameter condition: Condition type
      
      - returns: Instance of Tracker class
      */
-    init(key: String, condition: TrackerCondition) {
-        self.key = key
-        self.condition = condition
+    class func register(with key: String, condition: TrackerCondition) {
+        let tracker = Tracker()
         
-        TrackerPool.sharedInstance[key] = self
+        tracker.key = key
+        tracker.condition = condition
+        
+        TrackerPool.sharedInstance[key] = tracker
     }
+
+    /*
+     Obtain tracker for key.
+     
+     - Parameter key: Identification key
+     
+     - Returns: Instance of Tracker class
+    */
+    class func obtain(for key: String) -> Tracker? {
+        return TrackerPool.sharedInstance[key]
+    }
+    
     
     /**
      Commit usage. Increment usages count by 1 and check if usages count satisfies condition
