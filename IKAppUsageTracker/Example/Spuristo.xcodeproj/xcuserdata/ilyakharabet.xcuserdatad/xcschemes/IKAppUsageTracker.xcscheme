@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "965F8CCC1CEB037E008477B5"
-               BuildableName = "IKAppUsageTracker.app"
-               BlueprintName = "IKAppUsageTracker"
-               ReferencedContainer = "container:IKAppUsageTracker.xcodeproj">
+               BuildableName = "Spuristo.app"
+               BlueprintName = "Spuristo"
+               ReferencedContainer = "container:Spuristo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "967E2DB71CEB74EF00D30056"
-               BuildableName = "IKAppUsageTrackerTests.xctest"
-               BlueprintName = "IKAppUsageTrackerTests"
-               ReferencedContainer = "container:IKAppUsageTracker.xcodeproj">
+               BuildableName = "SpuristoTests.xctest"
+               BlueprintName = "SpuristoTests"
+               ReferencedContainer = "container:Spuristo.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "965F8CCC1CEB037E008477B5"
-            BuildableName = "IKAppUsageTracker.app"
-            BlueprintName = "IKAppUsageTracker"
-            ReferencedContainer = "container:IKAppUsageTracker.xcodeproj">
+            BuildableName = "Spuristo.app"
+            BlueprintName = "Spuristo"
+            ReferencedContainer = "container:Spuristo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -66,9 +66,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "965F8CCC1CEB037E008477B5"
-            BuildableName = "IKAppUsageTracker.app"
-            BlueprintName = "IKAppUsageTracker"
-            ReferencedContainer = "container:IKAppUsageTracker.xcodeproj">
+            BuildableName = "Spuristo.app"
+            BlueprintName = "Spuristo"
+            ReferencedContainer = "container:Spuristo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -85,9 +85,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "965F8CCC1CEB037E008477B5"
-            BuildableName = "IKAppUsageTracker.app"
-            BlueprintName = "IKAppUsageTracker"
-            ReferencedContainer = "container:IKAppUsageTracker.xcodeproj">
+            BuildableName = "Spuristo.app"
+            BlueprintName = "Spuristo"
+            ReferencedContainer = "container:Spuristo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

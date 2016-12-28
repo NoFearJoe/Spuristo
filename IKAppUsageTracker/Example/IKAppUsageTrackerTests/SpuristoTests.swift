@@ -1,15 +1,15 @@
 //
-//  IKAppUsageTrackerTests.swift
-//  IKAppUsageTrackerTests
+//  SpuristoTests.swift
+//  SpuristoTests
 //
 //  Created by Ilya Kharabet on 17.05.16.
 //  Copyright © 2016 Ilya Kharabet. All rights reserved.
 //
 
 import XCTest
-@testable import IKAppUsageTracker
+@testable import Spuristo
 
-class IKAppUsageTrackerTests: XCTestCase {
+class SpuristoTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
