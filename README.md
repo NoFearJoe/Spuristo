@@ -1,27 +1,25 @@
-# IKAppUsageTracker
-Simple and helpful class for tracking usages in your App.
+# Spuristo
+Spuristo is a simple tracker of actions.
 
 ## Use cases
-* Counting the number of some actions. (For example, to show rate dialog)
+* Counting the number of some actions. (For example, to show rate dialog after 3 App launches)
 * Counting the time between some actions. (For example, counting App usage time or time period when App is in background)
 
 ## Installation
-#### Pods
-
 #### Drop files to Xcode
 Just download the source code from repository and drop all files from "Sources" directory to your Xcode project.
 
 ## Usage
-##### Init tracker
-At first create instance of IKTracker class like this:
+##### Create tracker
+At first create instance of Tracker class like this:
 ```Swift
-  let tracker = IKTracker(key: "some_key", condition: IKTrackerCondition.Every(2))
+  let tracker = Tracker(with: "some_key", condition: TrackerCondition.Every(2))
 ```
 
-##### Shared tracker pool
-Where key is any string that identifies this tracker object in trackers pool. All trackers are automatically added to IKTrackerPool shared instance. And you can get anyone like this:
+##### Get tracker instance
+Where key is any string that identifies this tracker object in trackers pool. All trackers are automatically added to tracker pool. And you can get anyone like this:
 ```Swift
-  let tracker = IKTrackerPool.sharedInstance["some_key"]
+  let tracker = Tracker(for: "some_key")
 ```
 
 ##### Conditions
@@ -39,9 +37,15 @@ or
 ```Swift
   tracker.commit(n: UInt)
 ```
+In second case tracker will commit N times.
 
 ##### Checkpoint
-Checkpoint is closure calls when usages count satisfies the condition. For example, checkpoint closure will be called if condition is .Every(2) and usagesCount is 2
+Checkpoint is closure calls when usages count satisfies the condition. For example, checkpoint closure will be called if condition is .Every(2) and action was commited 2 times.
+```Swift
+  tracker.checkpoint = {
+    // Some code
+  }
+```
 
 ##### Other functions
 Sets tracker to initial state
