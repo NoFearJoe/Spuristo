@@ -1,9 +1,8 @@
 # Spuristo
-Spuristo is a simple tracker of actions.
+Spuristo is a simple actions tracker.
 
-## Use cases
+## Use case
 * Counting the number of some actions. (For example, to show rate dialog after 3 App launches)
-* Counting the time between some actions. (For example, counting App usage time or time period when App is in background)
 
 ## Installation
 #### Drop files to Xcode
@@ -40,7 +39,7 @@ or
 In second case tracker will commit ```n``` times.
 
 ##### Checkpoint
-Checkpoint is closure calls when usages count satisfies the condition. For example, checkpoint closure will be called if condition is ```.Every(2)``` and action was commited 2 times.
+Checkpoint is closure called when usages count satisfies the condition. For example, checkpoint closure will be called if condition is ```.Every(2)``` and action was commited 2 times.
 ```Swift
   tracker.checkpoint = {
     // Some code
