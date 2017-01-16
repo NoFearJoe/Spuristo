@@ -9,32 +9,32 @@
 import Foundation
 
 
-typealias VoidClosure = () -> ()
+typealias CheckpointClosure = () -> ()
 
 
 /**
- Enum of checkpoint call conditions
+ Tracker condition types
  
- - Once:      Tracker will call checkpiont once after N usages
- - Every:     Tracker will call checkpoint every N usages
- - Quadratic: Tracker will call checkpoint every time when usages count is power of N
+ - Once:      Tracker will evaluate checkpiont once after N usages
+ - Every:     Tracker will evaluate checkpoint every N usages
+ - Quadratic: Tracker will evaluate checkpoint every time when usages count is power of N
  */
 enum TrackerCondition {
     
-    /// Tracker will call checkpiont once after N usages
-    case Once(UInt)
+    /// Tracker will evaluate checkpiont once after N usages
+    case once(UInt)
     
-    /// Tracker will call checkpoint every N usages
-    case Every(UInt)
+    /// Tracker will evaluate checkpoint every N usages
+    case every(UInt)
     
-    /// Tracker will call checkpoint every power of N
-    case Quadratic(UInt)
+    /// Tracker will evaluate checkpoint every power of N
+    case quadratic(UInt)
     
 }
 
 
-/// Tracker class instances pool. Use TrackerPool.sharedInstance[KEY] for getting Tracker instance with desired KEY
-final class TrackerPool {
+/// Tracker class instances pool. Use TrackerPool.sharedInstance[KEY] for getting Tracker instance with desird KEY
+fileprivate final class TrackerPool {
     
     /// TrackerPool shared instance
     static let sharedInstance = TrackerPool()
@@ -59,7 +59,7 @@ final class TrackerPool {
     }
     
     
-    private var pool = [String: Tracker]()
+    fileprivate var pool = [String: Tracker]()
     
 }
 
@@ -67,59 +67,67 @@ final class TrackerPool {
 class Tracker {
     
     /// Class identifier
-    private static let identifier: String = NSStringFromClass(Tracker.self)
-    
+    fileprivate static let identifier: String = NSStringFromClass(Tracker.self)
     
     /// Closure fired when usages count satisfies the condition
-    var checkpoint: VoidClosure?
-    
+    var checkpoint: CheckpointClosure?
     
     /// Identification key
-    private(set) var key: String!
-    private(set) var condition: TrackerCondition!
-    
+    fileprivate(set) var key: String!
+    fileprivate(set) var condition: TrackerCondition!
     
     /// Usages counter
-    private(set) var usagesCount: UInt {
+    fileprivate(set) var usagesCount: UInt {
         get {
-            return (NSUserDefaults.standardUserDefaults().objectForKey(Tracker.identifier + key + "usagesCount") ?? 0) as! UInt
+            let value = (UserDefaults.standard.object(forKey: Tracker.identifier + key + "usagesCount") ?? 0) as! Int
+            return UInt(value)
         }
         set {
-            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: Tracker.identifier + key + "usagesCount")
-            NSUserDefaults.standardUserDefaults().synchronize()
+            UserDefaults.standard.set(newValue, forKey: Tracker.identifier + key + "usagesCount")
         }
     }
     
-    /// Returns true if tracker enabled
-    private(set) var enabled: Bool {
+    /// Return true if tracker enabled
+    fileprivate(set) var enabled: Bool {
         get {
-            return (NSUserDefaults.standardUserDefaults().objectForKey(Tracker.identifier + key + "enabled") ?? true) as! Bool
+            return (UserDefaults.standard.object(forKey: Tracker.identifier + key + "enabled") ?? true) as! Bool
         }
         set {
-            NSUserDefaults.standardUserDefaults().setBool(newValue, forKey: Tracker.identifier + key + "enabled")
-            NSUserDefaults.standardUserDefaults().synchronize()
+            UserDefaults.standard.set(newValue, forKey: Tracker.identifier + key + "enabled")
         }
     }
     
-    
-    /**
-     Tracker initializer. This instance will be automatically added to TrackerPool
+    /*
+     Register tracker with given key and condition.
      
      - parameter key:       Identification key
      - parameter condition: Condition type
      
      - returns: Instance of Tracker class
      */
-    init(key: String, condition: TrackerCondition) {
-        self.key = key
-        self.condition = condition
+    class func register(with key: String, condition: TrackerCondition) {
+        let tracker = Tracker()
         
-        TrackerPool.sharedInstance[key] = self
+        tracker.key = key
+        tracker.condition = condition
+        
+        TrackerPool.sharedInstance[key] = tracker
+    }
+    
+    /*
+     Obtain tracker for key.
+     
+     - Parameter key: Identification key
+     
+     - Returns: Instance of Tracker class
+     */
+    class func obtain(for key: String) -> Tracker? {
+        return TrackerPool.sharedInstance[key]
     }
     
     
     /**
-     Commits usage. Increments usages count by 1 and check if usages count satisfies condition
+     Commit usage. Increment usages count by 1 and check if usages count satisfies condition
      */
     func commit() {
         if enabled {
@@ -136,7 +144,7 @@ class Tracker {
     }
     
     /**
-     Returns tracker to initial state (usages count = 0 and enabled = true)
+     Return tracker to initial state (usages count = 0 and enabled = true)
      */
     func drop() {
         usagesCount = 0
@@ -145,49 +153,48 @@ class Tracker {
     
     
     /**
-     Sets tracker disabled. WARNING: Tracker never been work after calling of this function!
+     Set tracker disabled. WARNING: Tracker never been work after evaluating of this function!
      */
     func disable() {
         enabled = false
     }
     
-    
     /**
-     Checks if usages count saticfies condition
+     Check if usages count saticfies condition
      
      - parameter count:     Usages count
      - parameter condition: Condition type
      
      - returns: True if satisfies
      */
-    private func satisfiesCondition(usagesCount count: UInt, condition: TrackerCondition) -> Bool {
+    fileprivate func satisfiesCondition(usagesCount count: UInt, condition: TrackerCondition) -> Bool {
         switch condition {
-        case .Once(let targetCount):
+        case .once(let targetCount):
             return enabled && usagesCount == targetCount
-        case .Every(let targetCount):
-            return enabled && Double(usagesCount) % Double(targetCount) == 0
-        case .Quadratic(let targetCount):
+        case .every(let targetCount):
+            return enabled && Double(usagesCount).truncatingRemainder(dividingBy: Double(targetCount)) == 0
+        case .quadratic(let targetCount):
             let power = log(Double(usagesCount)) / log(Double(targetCount))
             return enabled && floor(power) == power && power != 0
         }
     }
     
     /**
-     Sets tracker disabled if needed
+     Set tracker disabled if needed
      
      - parameter condition: Condition type
      */
-    private func setEnabledByCondition(usagesCount: UInt, condition: TrackerCondition) {
+    fileprivate func setEnabledByCondition(_ usagesCount: UInt, condition: TrackerCondition) {
         switch condition {
-        case .Once(_):
+        case .once(_):
             enabled = false
             break
-        case .Every(_):
+        case .every(_):
             if usagesCount >= UInt.max {
                 enabled = false
             }
             break
-        case .Quadratic(_):
+        case .quadratic(_):
             if usagesCount >= UInt.max {
                 enabled = false
             }

@@ -9,7 +9,7 @@
 import Foundation
 
 
-typealias VoidClosure = () -> ()
+typealias CheckpointClosure = () -> ()
 
 
 /**
@@ -70,7 +70,7 @@ class Tracker {
     fileprivate static let identifier: String = NSStringFromClass(Tracker.self)
     
     /// Closure fired when usages count satisfies the condition
-    var checkpoint: VoidClosure?
+    var checkpoint: CheckpointClosure?
     
     /// Identification key
     fileprivate(set) var key: String!
@@ -79,11 +79,11 @@ class Tracker {
     /// Usages counter
     fileprivate(set) var usagesCount: UInt {
         get {
-            return (UserDefaults.standard.object(forKey: Tracker.identifier + key + "usagesCount") ?? 0) as! UInt
+            let value = (UserDefaults.standard.object(forKey: Tracker.identifier + key + "usagesCount") ?? 0) as! Int
+            return UInt(value)
         }
         set {
             UserDefaults.standard.set(newValue, forKey: Tracker.identifier + key + "usagesCount")
-            UserDefaults.standard.synchronize()
         }
     }
     
@@ -94,7 +94,6 @@ class Tracker {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: Tracker.identifier + key + "enabled")
-            UserDefaults.standard.synchronize()
         }
     }
     
