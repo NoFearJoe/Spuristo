@@ -30,6 +30,15 @@ enum TrackerCondition {
     /// Tracker will evaluate checkpoint every power of N
     case quadratic(UInt)
     
+    
+    var n: UInt {
+        switch self {
+        case .once(let n): return n
+        case .every(let n): return n
+        case .quadratic(let n): return n
+        }
+    }
+    
 }
 
 
