@@ -12,8 +12,8 @@
 		965F8CD81CEB037E008477B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 965F8CD71CEB037E008477B5 /* Assets.xcassets */; };
 		965F8CDB1CEB037E008477B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 965F8CD91CEB037E008477B5 /* LaunchScreen.storyboard */; };
 		965F8CE51CEB1D00008477B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965F8CE41CEB1D00008477B5 /* AppDelegate.swift */; };
-		967E2DB31CEB745700D30056 /* IKTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967E2DB21CEB745700D30056 /* IKTracker.swift */; };
-		967E2DBB1CEB74EF00D30056 /* IKAppUsageTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967E2DBA1CEB74EF00D30056 /* IKAppUsageTrackerTests.swift */; };
+		967E2DB31CEB745700D30056 /* Tracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967E2DB21CEB745700D30056 /* Tracker.swift */; };
+		967E2DBB1CEB74EF00D30056 /* SpuristoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967E2DBA1CEB74EF00D30056 /* SpuristoTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,16 +27,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		965F8CCD1CEB037E008477B5 /* IKAppUsageTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IKAppUsageTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		965F8CCD1CEB037E008477B5 /* Spuristo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spuristo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		965F8CD21CEB037E008477B5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		965F8CD51CEB037E008477B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		965F8CD71CEB037E008477B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		965F8CDA1CEB037E008477B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		965F8CDC1CEB037E008477B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		965F8CE41CEB1D00008477B5 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		967E2DB21CEB745700D30056 /* IKTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKTracker.swift; sourceTree = "<group>"; };
-		967E2DB81CEB74EF00D30056 /* IKAppUsageTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IKAppUsageTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		967E2DBA1CEB74EF00D30056 /* IKAppUsageTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKAppUsageTrackerTests.swift; sourceTree = "<group>"; };
+		967E2DB21CEB745700D30056 /* Tracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tracker.swift; sourceTree = "<group>"; };
+		967E2DB81CEB74EF00D30056 /* SpuristoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpuristoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		967E2DBA1CEB74EF00D30056 /* SpuristoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpuristoTests.swift; sourceTree = "<group>"; };
 		967E2DBC1CEB74EF00D30056 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,8 +61,8 @@
 		965F8CC41CEB037E008477B5 = {
 			isa = PBXGroup;
 			children = (
-				965F8CCF1CEB037E008477B5 /* IKAppUsageTracker */,
-				967E2DB91CEB74EF00D30056 /* IKAppUsageTrackerTests */,
+				965F8CCF1CEB037E008477B5 /* AppUsageTracker */,
+				967E2DB91CEB74EF00D30056 /* SpuristoTests */,
 				965F8CCE1CEB037E008477B5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,16 +70,16 @@
 		965F8CCE1CEB037E008477B5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				965F8CCD1CEB037E008477B5 /* IKAppUsageTracker.app */,
-				967E2DB81CEB74EF00D30056 /* IKAppUsageTrackerTests.xctest */,
+				965F8CCD1CEB037E008477B5 /* Spuristo.app */,
+				967E2DB81CEB74EF00D30056 /* SpuristoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		965F8CCF1CEB037E008477B5 /* IKAppUsageTracker */ = {
+		965F8CCF1CEB037E008477B5 /* AppUsageTracker */ = {
 			isa = PBXGroup;
 			children = (
-				967E2DB21CEB745700D30056 /* IKTracker.swift */,
+				967E2DB21CEB745700D30056 /* Tracker.swift */,
 				965F8CE41CEB1D00008477B5 /* AppDelegate.swift */,
 				965F8CD21CEB037E008477B5 /* ViewController.swift */,
 				965F8CD41CEB037E008477B5 /* Main.storyboard */,
@@ -87,24 +87,26 @@
 				965F8CD91CEB037E008477B5 /* LaunchScreen.storyboard */,
 				965F8CDC1CEB037E008477B5 /* Info.plist */,
 			);
+			name = AppUsageTracker;
 			path = IKAppUsageTracker;
 			sourceTree = "<group>";
 		};
-		967E2DB91CEB74EF00D30056 /* IKAppUsageTrackerTests */ = {
+		967E2DB91CEB74EF00D30056 /* SpuristoTests */ = {
 			isa = PBXGroup;
 			children = (
-				967E2DBA1CEB74EF00D30056 /* IKAppUsageTrackerTests.swift */,
+				967E2DBA1CEB74EF00D30056 /* SpuristoTests.swift */,
 				967E2DBC1CEB74EF00D30056 /* Info.plist */,
 			);
+			name = SpuristoTests;
 			path = IKAppUsageTrackerTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		965F8CCC1CEB037E008477B5 /* IKAppUsageTracker */ = {
+		965F8CCC1CEB037E008477B5 /* Spuristo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 965F8CDF1CEB037E008477B5 /* Build configuration list for PBXNativeTarget "IKAppUsageTracker" */;
+			buildConfigurationList = 965F8CDF1CEB037E008477B5 /* Build configuration list for PBXNativeTarget "Spuristo" */;
 			buildPhases = (
 				965F8CC91CEB037E008477B5 /* Sources */,
 				965F8CCA1CEB037E008477B5 /* Frameworks */,
@@ -114,14 +116,14 @@
 			);
 			dependencies = (
 			);
-			name = IKAppUsageTracker;
+			name = Spuristo;
 			productName = IKAppUsageTracker;
-			productReference = 965F8CCD1CEB037E008477B5 /* IKAppUsageTracker.app */;
+			productReference = 965F8CCD1CEB037E008477B5 /* Spuristo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		967E2DB71CEB74EF00D30056 /* IKAppUsageTrackerTests */ = {
+		967E2DB71CEB74EF00D30056 /* SpuristoTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 967E2DBF1CEB74EF00D30056 /* Build configuration list for PBXNativeTarget "IKAppUsageTrackerTests" */;
+			buildConfigurationList = 967E2DBF1CEB74EF00D30056 /* Build configuration list for PBXNativeTarget "SpuristoTests" */;
 			buildPhases = (
 				967E2DB41CEB74EF00D30056 /* Sources */,
 				967E2DB51CEB74EF00D30056 /* Frameworks */,
@@ -132,9 +134,9 @@
 			dependencies = (
 				967E2DBE1CEB74EF00D30056 /* PBXTargetDependency */,
 			);
-			name = IKAppUsageTrackerTests;
+			name = SpuristoTests;
 			productName = IKAppUsageTrackerTests;
-			productReference = 967E2DB81CEB74EF00D30056 /* IKAppUsageTrackerTests.xctest */;
+			productReference = 967E2DB81CEB74EF00D30056 /* SpuristoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -159,7 +161,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 965F8CC81CEB037E008477B5 /* Build configuration list for PBXProject "IKAppUsageTracker" */;
+			buildConfigurationList = 965F8CC81CEB037E008477B5 /* Build configuration list for PBXProject "Spuristo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -172,8 +174,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				965F8CCC1CEB037E008477B5 /* IKAppUsageTracker */,
-				967E2DB71CEB74EF00D30056 /* IKAppUsageTrackerTests */,
+				965F8CCC1CEB037E008477B5 /* Spuristo */,
+				967E2DB71CEB74EF00D30056 /* SpuristoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -204,7 +206,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				965F8CE51CEB1D00008477B5 /* AppDelegate.swift in Sources */,
-				967E2DB31CEB745700D30056 /* IKTracker.swift in Sources */,
+				967E2DB31CEB745700D30056 /* Tracker.swift in Sources */,
 				965F8CD31CEB037E008477B5 /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -213,7 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				967E2DBB1CEB74EF00D30056 /* IKAppUsageTrackerTests.swift in Sources */,
+				967E2DBB1CEB74EF00D30056 /* SpuristoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,7 +224,7 @@
 /* Begin PBXTargetDependency section */
 		967E2DBE1CEB74EF00D30056 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 965F8CCC1CEB037E008477B5 /* IKAppUsageTracker */;
+			target = 965F8CCC1CEB037E008477B5 /* Spuristo */;
 			targetProxy = 967E2DBD1CEB74EF00D30056 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -340,7 +342,7 @@
 				INFOPLIST_FILE = IKAppUsageTracker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = IK.IKAppUsageTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = IK.Spuristo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -354,7 +356,7 @@
 				INFOPLIST_FILE = IKAppUsageTracker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = IK.IKAppUsageTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = IK.Spuristo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -370,7 +372,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = IK.IKAppUsageTrackerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IKAppUsageTracker.app/IKAppUsageTracker";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Spuristo.app/Spuristo";
 			};
 			name = Debug;
 		};
@@ -384,14 +386,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = IK.IKAppUsageTrackerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IKAppUsageTracker.app/IKAppUsageTracker";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Spuristo.app/Spuristo";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		965F8CC81CEB037E008477B5 /* Build configuration list for PBXProject "IKAppUsageTracker" */ = {
+		965F8CC81CEB037E008477B5 /* Build configuration list for PBXProject "Spuristo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				965F8CDD1CEB037E008477B5 /* Debug */,
@@ -400,7 +402,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		965F8CDF1CEB037E008477B5 /* Build configuration list for PBXNativeTarget "IKAppUsageTracker" */ = {
+		965F8CDF1CEB037E008477B5 /* Build configuration list for PBXNativeTarget "Spuristo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				965F8CE01CEB037E008477B5 /* Debug */,
@@ -409,7 +411,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		967E2DBF1CEB74EF00D30056 /* Build configuration list for PBXNativeTarget "IKAppUsageTrackerTests" */ = {
+		967E2DBF1CEB74EF00D30056 /* Build configuration list for PBXNativeTarget "SpuristoTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				967E2DC01CEB74EF00D30056 /* Debug */,

@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        let _ = IKTracker(key: "sharedTracker", condition: IKTrackerCondition.once(5))
+        Tracker.register(with: "sharedTracker", condition: TrackerCondition.once(5))
         
         return true
     }

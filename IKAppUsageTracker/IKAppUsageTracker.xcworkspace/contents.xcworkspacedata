@@ -2,13 +2,13 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Example/IKAppUsageTracker.xcodeproj">
+      location = "group:/Users/ilyakharabet/Documents/Git/IKAppUsageTracker/IKAppUsageTracker/Example/Spuristo.xcodeproj">
    </FileRef>
    <Group
       location = "group:Source"
       name = "Source">
       <FileRef
-         location = "group:IKTracker.swift">
+         location = "group:/Users/ilyakharabet/Documents/Git/IKAppUsageTracker/IKAppUsageTracker/Source/Tracker.swift">
       </FileRef>
    </Group>
 </Workspace>
