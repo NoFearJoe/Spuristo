@@ -1,6 +1,8 @@
 # Spuristo
 Spuristo is a simple actions tracker.
 
+![Preview](/images/preview.gif)
+
 ## Use case
 * Counting the number of some actions. (For example, to show rate dialog after 3 App launches)
 
